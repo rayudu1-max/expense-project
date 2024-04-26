@@ -39,7 +39,7 @@ systemctl start mysqld &>>$LOGFILE
 VALIDATE $? "Starting of MYSQL"
 
 mysql -h 54.221.150.18 -uroot -p${DB_PASSWORD} -e 'show database;'
-if [ $? -ne 0]
+if [ $? -ne 0 ]
 then
     mysql_secure_installation --set-root-pass ${DB_PASSWORD} &>>$LOGFILE
     VALIDATE $? "DB password has been set"
