@@ -61,7 +61,7 @@ VALIDATE $? "Unzipping backend code"
 npn install &>>$LOGFILE
 VALIDATE $? "Installing dependencies"
 
-cp                                        /etc/systemd/system/backend.service &>>$LOGFILE
+cp /home/ec2-user/expense-project/backend.service /etc/systemd/system/backend.service &>>$LOGFILE
 VALIDATE $? "Copying backend.service to system"
 
 systemctl daemon-reload &>>$LOGFILE
@@ -73,7 +73,7 @@ VALIDATE $? "Starting backend"
 systemctl enable backend &>>$LOGFILE
 VALIDATE $? "Enabling backend"
 
-mysql -h                -uroot -p${DB_PASSWORD} < /app/schema/backend.sql &>>$LOGFILE
+mysql -h 172.31.16.18 -uroot -p${DB_PASSWORD} < /app/schema/backend.sql &>>$LOGFILE
 VALIDATE $? "Loading schema"
 
 systemctl restart backend &>>$LOGFILE

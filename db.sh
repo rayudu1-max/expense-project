@@ -12,7 +12,7 @@ echo "enter the DB password"
 read DB_PASSWORD
 
 VALIDATE() {
-    if [$1 -ne 0 ]
+    if [ $1 -ne 0 ]
     then
         echo -e "$2 .....$R FAILURE $N"
         exit 1
@@ -21,7 +21,7 @@ VALIDATE() {
     fi
 }
 
-if [ $USERID -ne 0]
+if [ $USERID -ne 0 ]
 then
     echo "Please run the script as a root user"
     exit 1
@@ -38,7 +38,7 @@ VALIDATE $? "Enabling of MYSQL"
 systemctl start mysqld &>>$LOGFILE
 VALIDATE $? "Starting of MYSQL"
 
-mysql -h LOCALHOST -uroot -p${DB_PASSWORD} -e 'show database'
+mysql -h 172.31.21.105 -uroot -p${DB_PASSWORD} -e 'show database'
 if [ $? -ne 0]
 then
     mysql_secure_installation --set-root-pass ${DB_PASSWORD} &>>$LOGFILE

@@ -46,7 +46,7 @@ cd /usr/share/nginx/html
 unzip /tmp/frontend.zip &>>$LOGFILE
 VALIDATE $? "extracting front end code"
 
-cp                                       /etc/nginx/default.d/expese.conf &>>$LOGFILE
+cp /home/ec2-user/expense-project/expense.conf /etc/nginx/default.d/expense.conf &>>$LOGFILE
 VALIDATE $? "Creating Nginx Reverse Proxy Configuration"
 
 systemctl restart nginx &>>$LOGFILE
