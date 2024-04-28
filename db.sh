@@ -9,7 +9,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 echo "enter the DB password"
-read DB_PASSWORD
+read -s DB_PASSWORD
 
 VALIDATE() {
     if [ $1 -ne 0 ]
