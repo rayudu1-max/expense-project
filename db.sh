@@ -9,7 +9,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 echo "enter the DB password"
-read -s DB_PASSWORD
+read DB_PASSWORD
 
 VALIDATE() {
     if [ $1 -ne 0 ]
@@ -42,7 +42,7 @@ mysql db.rayudum.online -uroot -p${DB_PASSWORD} -e 'show databases;'
 if [ $? -ne 0 ]
 then
     mysql_secure_installation --set-root-pass ${DB_PASSWORD} &>>$LOGFILE
-    VALIDATE $? "DB password has been set"
+    VALIDATE $? "Setting DB password"
 else
     echo -e "MySQL Root password is already setup...$Y SKIPPING $N"
 fi
