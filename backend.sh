@@ -58,7 +58,7 @@ rm -rf /app/*
 unzip /tmp/backend.zip &>>$LOGFILE
 VALIDATE $? "Unzipping backend code"
 
-npn install &>>$LOGFILE
+npm install &>>$LOGFILE
 VALIDATE $? "Installing dependencies"
 
 cp /home/ec2-user/expense-project/backend.service /etc/systemd/system/backend.service &>>$LOGFILE
