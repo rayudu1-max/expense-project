@@ -38,11 +38,11 @@ VALIDATE $? "Enabling of MYSQL"
 systemctl start mysqld &>>$LOGFILE
 VALIDATE $? "Starting of MYSQL"
 
-mysql db.rayudum.online -uroot -p${DB_PASSWORD} -e 'show database;'
+mysql db.rayudum.online -uroot -p${DB_PASSWORD} -e 'show databases;'
 if [ $? -ne 0 ]
 then
     mysql_secure_installation --set-root-pass ${DB_PASSWORD} &>>$LOGFILE
     VALIDATE $? "DB password has been set"
 else
-    echo "Password has been already set"
+    echo -e "MySQL Root password is already setup...$Y SKIPPING $N"
 fi
