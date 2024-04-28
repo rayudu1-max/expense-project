@@ -73,10 +73,8 @@ VALIDATE $? "Starting backend"
 systemctl enable backend &>>$LOGFILE
 VALIDATE $? "Enabling backend"
 
-mysql -h 172.31.16.18 -uroot -p${DB_PASSWORD} < /app/schema/backend.sql &>>$LOGFILE
+mysql -h db.rayudum.online -uroot -p${DB_PASSWORD} < /app/schema/backend.sql &>>$LOGFILE
 VALIDATE $? "Loading schema"
 
 systemctl restart backend &>>$LOGFILE
 VALIDATE $? "Restarting backend"
-
-
